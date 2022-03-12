@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--  Стили скрипты  -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/index.js" defer></script>
+
+    <!--  Шрифты  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Work+Sans:wght@100&display=swap"
+          rel="stylesheet">
+
+    <title>Mover</title>
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-wrapper">
+                <img src="assets/images/icons/logo.svg" alt="logo" class="logo">
+            </div>
+            <nav class="nav">
+                <ul class="header-menu">
+                    <li class="menu__item menu-item">
+                        <img src="assets/images/icons/search.svg" alt="search-icon" class="menu-item__img">
+                        <a href="#" class="menu-item__link"> Искать</a>
+                    </li>
+                    <li class="menu__item menu-item">
+                        <a href="#" class="menu-item__link">Добавить поездку</a>
+                    </li>
+                    <li class="menu__item menu-item">
+                        <a href="#" class="menu-item__link"> <img src="assets/images/icons/user.svg" alt="logo"
+                                                                  class="menu-item__img"> </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<section class="section section-single search">
+    <div class="container">
+        <header class="search-header">
+            <form action="?" class="form banner-form search-form" method="post" name="search">
+                <input type="text" class="input banner__input first" name="from" placeholder="Откуда">
+
+                <input type="text" class="input banner__input" name="to" placeholder="Куда">
+
+                <input type="date" class="input banner__input" name="date">
+
+                <input type="text" class="input banner__input" name="quantity" value="1">
+                <button class="button banner__button last">Найти</button>
+            </form>
+        </header>
+        <div class="section-content search-content">
+            <div class="grid search-grid">
+                <div class="filter">
+                    <ul class="accordion filter-accordion">
+                        <div class="filter-header">
+                            <h2 class="filter__title">Сортировка</h2>
+                            <a href="#" class="filter__reset">Сбросить все</a>
+                        </div>
+
+                        <!-- Аккордион -->
+                        <li class="accordion-item">
+                            <div class="accordion-header">
+                                <h3 class="accordion-header__title">
+                                    Дата
+                                </h3>
+                                <div class="accordion__button">
+                                    <img src="assets/images/icons/down-arrow.svg" alt="arrow" class="accordion__arrow">
+                                </div>
+                            </div>
+
+                            <div class="accordion-content">
+                                <p class="accordion-content__text">
+                                    <input type="date" class="input form__input" id="routeDate" placeholder=" ">
+                                </p>
+                            </div>
+                        </li>
+                        <hr>
+                        <li class="accordion-item">
+                            <div class="accordion-header">
+                                <h3 class="accordion-header__title">
+                                    Количество мест
+                                </h3>
+                                <div class="accordion__button">
+                                    <img src="assets/images/icons/down-arrow.svg" alt="arrow" class="accordion__arrow">
+                                </div>
+                            </div>
+
+                            <div class="accordion-content">
+                                <div class="form__group">
+                                    <input type="input" class="input form__input" id="seatCount" placeholder=" ">
+                                    <label for="seatCount" class="form__label">Количество мест</label>
+                                </div>
+                            </div>
+                        </li>
+                        <hr>
+                        <li class="accordion-item">
+                            <div class="accordion-header">
+                                <h3 class="accordion-header__title">
+                                    Класс автомобиля
+                                </h3>
+                                <div class="accordion__button">
+                                    <img src="assets/images/icons/down-arrow.svg" alt="arrow" class="accordion__arrow">
+                                </div>
+                            </div>
+
+                            <div class="accordion-content">
+                                <select class="input form__input">
+                                    <option value="Эконом">Эконом</option>
+                                    <option value="Комфорт">Комфорт</option>
+                                    <option value="Бизнес">Бизнес</option>
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="result">
+
+                    <ul class="grid result-grid">
+
+                        <li class="result-info">
+                            <h2 class="result__title">Сегодня</h2>
+                            <p class="result__num">Найдено: 12</p>
+                        </li>
+                        <a href="#">
+                            <li class="route">
+                                <header class="route-header">
+                                    <div class="route-info">
+                                        <p class="route-dist">Москва</p>
+                                        <p class="route-dist">Казань</p>
+                                    </div>
+                                    <p class="price route-price">800,00 ₽</p>
+                                </header>
+                                <footer class="route-footer">
+
+                                </footer>
+                            </li>
+                        </a>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="assets/images/icons/logo.svg" alt="logo" class="logo">
+            </div>
+
+            <p class="footer__text">Mover, 2022 &copy;</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
