@@ -126,7 +126,7 @@
                 </div>
                 <div class="result">
 
-                    <ul class="grid result-grid">
+                    <ul class="result-wrapper">
 
                         <li class="result-info">
                             <h2 class="result__title">Сегодня</h2>
@@ -136,13 +136,37 @@
                             <li class="route">
                                 <header class="route-header">
                                     <div class="route-info">
-                                        <p class="route-dist">Москва</p>
-                                        <p class="route-dist">Казань</p>
+                                        <h4 class="route__title">Время в пути:</h4>
+                                        <div class="route-way">
+                                            <p class="route-dist">Москва</p>
+                                            <img src="assets/images/icons/arrow.svg" alt="arrow" class="arrow">
+                                            <p class="route-dist">Казань</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="route-duration">
+                                        <h4 class="route__title">Время в пути:</h4>
+                                        <p class="route__duration">3 ч.</p>
                                     </div>
                                     <p class="price route-price">800,00 ₽</p>
                                 </header>
                                 <footer class="route-footer">
-
+                                    <div class="user">
+                                        <div class="user-photo">
+                                            <img src="assets/images/avatar/user.svg" alt="avatar" class="user__img">
+                                        </div>
+                                        <div class="user-info">
+                                            <h4 class="user__name">Аркадий</h4>
+                                            <p class="user__rating">5.0
+                                                <svg width="17" height="16" viewBox="0 0 17 16" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M4.112 15.443C3.726 15.641 3.288 15.294 3.366 14.851L4.196 10.121L0.672996 6.765C0.343996 6.451 0.514996 5.877 0.955996 5.815L5.854 5.119L8.038 0.792C8.235 0.402 8.768 0.402 8.965 0.792L11.149 5.119L16.047 5.815C16.488 5.877 16.659 6.451 16.329 6.765L12.807 10.121L13.637 14.851C13.715 15.294 13.277 15.641 12.891 15.443L8.5 13.187L4.111 15.443H4.112Z"
+                                                          fill="#054752"/>
+                                                </svg>
+                                            </p>
+                                        </div>
+                                    </div>
                                 </footer>
                             </li>
                         </a>
