@@ -51,7 +51,12 @@ require('app/models/User.php');
 
                     <div class="form__group">
                         <input type="input" class="input form__input" id="tripPrice" name="price" placeholder=" ">
-                        <label for="tripTo" class="form__label">Цена</label>
+                        <label for="tripPrice" class="form__label">Цена</label>
+                    </div>
+
+                    <div class="form__group">
+                        <input type="number" class="input form__input" id="tripSeat" name="seats" placeholder=" ">
+                        <label for="tripSeat" class="form__label">Количество мест</label>
                     </div>
 
                 </div>

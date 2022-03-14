@@ -517,3 +517,60 @@ ul, ol {
   }
 }
 
+.trip{
+
+  hr{
+    border-color: #00000012;
+  }
+
+  &-route{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-content{
+    display: flex;
+    flex-direction: column;
+    max-width: 550px;
+    margin: 0 auto;
+    gap: 20px;
+  }
+  &-date{
+    text-align: center;
+  }
+
+  &-user{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .user{
+    &__photo{
+      width: 40px;
+    }
+  }
+
+  &__button{
+    padding: 10px;
+    text-align: center;
+  }
+
+  &-price{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-car{
+    font-size: 18px;
+  }
+}
+

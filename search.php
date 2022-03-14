@@ -128,11 +128,7 @@ require('app/models/Trip.php');
                     </ul>
                 </div>
                 <div class="result">
-                    <?php
-                    $trips = $database->query("SELECT *, trip.id AS trip_id FROM `trip` INNER JOIN `users` ON `trip`.`user_id` = `users`.`id`")->fetchAll(PDO::FETCH_ASSOC);
-                    var_dump($trips);
-//                    $trip_id = $database->query("SELECT id AS trip_id FROM `trip`")
-                    ?>
+                    <?php $trips = $database->query("SELECT *, trip.id AS trip_id FROM `trip` INNER JOIN `users` ON `trip`.`user_id` = `users`.`id`")->fetchAll(PDO::FETCH_ASSOC); ?>
                     <ul class="result-wrapper">
 
                         <li class="result-info">

@@ -29,6 +29,7 @@ if (isset($_POST)) {
     $date = $_POST['date'];
     $price = $_POST['price'];
     $userId = $_SESSION['id'];
+    $car_seat = $_SESSION['id'];
 
     if (empty($_SESSION['errors'])) {
         $trip = array(
@@ -37,7 +38,8 @@ if (isset($_POST)) {
             "time" => $time,
             "date" => $date,
             "user_id" => $userId,
-            "price" => $price
+            "price" => $price,
+            "car_seats" => $car_seat
         );
 
         var_dump($trip);
