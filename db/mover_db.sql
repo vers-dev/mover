@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Mar 14, 2022 at 01:50 PM
--- Server version: 5.7.33
--- PHP Version: 8.0.8
+-- Хост: 127.0.0.1:3306
+-- Время создания: Мар 14 2022 г., 20:06
+-- Версия сервера: 5.7.33-log
+-- Версия PHP: 8.0.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mover_db`
+-- База данных: `mover_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `booking_trip`
+-- Структура таблицы `booking_trip`
 --
 
 CREATE TABLE `booking_trip` (
@@ -36,7 +36,7 @@ CREATE TABLE `booking_trip` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cars`
+-- Структура таблицы `cars`
 --
 
 CREATE TABLE `cars` (
@@ -45,7 +45,7 @@ CREATE TABLE `cars` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `cars`
+-- Дамп данных таблицы `cars`
 --
 
 INSERT INTO `cars` (`id`, `name`) VALUES
@@ -478,7 +478,7 @@ INSERT INTO `cars` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role`
+-- Структура таблицы `role`
 --
 
 CREATE TABLE `role` (
@@ -487,7 +487,7 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `role`
+-- Дамп данных таблицы `role`
 --
 
 INSERT INTO `role` (`id`, `name`) VALUES
@@ -498,7 +498,7 @@ INSERT INTO `role` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trip`
+-- Структура таблицы `trip`
 --
 
 CREATE TABLE `trip` (
@@ -516,16 +516,17 @@ CREATE TABLE `trip` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `trip`
+-- Дамп данных таблицы `trip`
 --
 
 INSERT INTO `trip` (`id`, `from`, `to`, `time`, `date`, `price`, `car_seats`, `car_id`, `user_id`, `status_id`, `created_at`) VALUES
-(2, 'Казань', 'Москва', '12:03', '2022-03-18', 0, NULL, NULL, 17, 1, '2022-03-13 22:30:55');
+(3, 'Владивосток', 'Калининград', '12:04', '2022-03-15', 10000, 3, NULL, 18, 1, '2022-03-14 13:11:24'),
+(4, 'Волгоград', 'Калининград', '12:20', '2022-03-16', 600, 18, NULL, 18, 1, '2022-03-14 15:49:47');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `trip_status`
+-- Структура таблицы `trip_status`
 --
 
 CREATE TABLE `trip_status` (
@@ -534,7 +535,7 @@ CREATE TABLE `trip_status` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `trip_status`
+-- Дамп данных таблицы `trip_status`
 --
 
 INSERT INTO `trip_status` (`id`, `name`) VALUES
@@ -545,7 +546,7 @@ INSERT INTO `trip_status` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Структура таблицы `users`
 --
 
 CREATE TABLE `users` (
@@ -565,7 +566,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `phone`, `first_name`, `last_name`, `mid_name`, `photo_url`, `rides`, `rating`, `car_id`, `role_id`, `created_at`) VALUES
@@ -579,45 +580,48 @@ INSERT INTO `users` (`id`, `email`, `password`, `phone`, `first_name`, `last_nam
 (14, 'butman95@bk.ru', '202cb962ac59075b964b07152d234b70', '123', '123', '123', '123', 'user.svg', 0, NULL, 1, 1, '2022-03-13 21:36:08'),
 (15, 'butman96@bk.ru', '202cb962ac59075b964b07152d234b70', '123', '123', '123', '123', 'user.svg', 0, NULL, 1, 1, '2022-03-13 21:36:24'),
 (16, 'butman46@bk.ru', '202cb962ac59075b964b07152d234b70', '123', '123', '123', '123', 'user.svg', 0, NULL, 1, 1, '2022-03-13 21:54:19'),
-(17, 'butman1236@bk.ru', 'd41d8cd98f00b204e9800998ecf8427e', '123', 'Акакий', 'Какиев', 'Какиевич', 'user.svg', 0, NULL, 1, 1, '2022-03-13 22:24:15');
+(18, 'butman99@bk.ru', 'd41d8cd98f00b204e9800998ecf8427e', '1231231', 'hjujd', 'hjujd', 'hjujd', 'user.svg', 0, NULL, 1, 1, '2022-03-14 13:01:11');
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `booking_trip`
+-- Индексы таблицы `booking_trip`
 --
 ALTER TABLE `booking_trip`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `trip_id` (`trip_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `cars`
+-- Индексы таблицы `cars`
 --
 ALTER TABLE `cars`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `role`
+-- Индексы таблицы `role`
 --
 ALTER TABLE `role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `trip`
+-- Индексы таблицы `trip`
 --
 ALTER TABLE `trip`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `status_id` (`status_id`);
+  ADD KEY `status_id` (`status_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `trip_status`
+-- Индексы таблицы `trip_status`
 --
 ALTER TABLE `trip_status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Индексы таблицы `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -625,61 +629,69 @@ ALTER TABLE `users`
   ADD KEY `car_id` (`car_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `booking_trip`
+-- AUTO_INCREMENT для таблицы `booking_trip`
 --
 ALTER TABLE `booking_trip`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `cars`
+-- AUTO_INCREMENT для таблицы `cars`
 --
 ALTER TABLE `cars`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=426;
 
 --
--- AUTO_INCREMENT for table `role`
+-- AUTO_INCREMENT для таблицы `role`
 --
 ALTER TABLE `role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `trip`
+-- AUTO_INCREMENT для таблицы `trip`
 --
 ALTER TABLE `trip`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `trip_status`
+-- AUTO_INCREMENT для таблицы `trip_status`
 --
 ALTER TABLE `trip_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- Constraints for dumped tables
+-- Ограничения внешнего ключа сохраненных таблиц
 --
 
 --
--- Constraints for table `trip`
+-- Ограничения внешнего ключа таблицы `booking_trip`
+--
+ALTER TABLE `booking_trip`
+  ADD CONSTRAINT `booking_trip_ibfk_1` FOREIGN KEY (`trip_id`) REFERENCES `trip` (`id`),
+  ADD CONSTRAINT `booking_trip_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `trip`
 --
 ALTER TABLE `trip`
-  ADD CONSTRAINT `trip_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `trip_status` (`id`);
+  ADD CONSTRAINT `trip_ibfk_1` FOREIGN KEY (`status_id`) REFERENCES `trip_status` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `trip_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `users`
+-- Ограничения внешнего ключа таблицы `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`);
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`car_id`) REFERENCES `cars` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
