@@ -5,8 +5,16 @@ $database = new QueryDataBase();
 session_start();
 
 require('app/models/User.php');
+require('app/models/Trip.php');
 
-$user = getUserById($_SESSION['id']);
+
+if (isset($_GET)){
+    $trip = getTripById($_GET['id']);
+    var_dump($trip);
+} else{
+    header("Location: search.php");
+}
+
 ?>
 
 <!doctype html>
@@ -17,7 +25,7 @@ $user = getUserById($_SESSION['id']);
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <?php require('app/snippets/head.php') ?>
+    <?php require('app/snippets/head.php'); ?>
 
     <title>Mover</title>
 </head>
@@ -25,20 +33,6 @@ $user = getUserById($_SESSION['id']);
 
 <?php require('app/snippets/header.php'); ?>
 
-<section class="section single-section profile">
-    <div class="container">
-        <div class="section-content profile-content">
-            <?php require('app/snippets/alert.php'); ?>
-
-            <div class="grid profile-grid">
-                <form action="?" class="profile-form">
-
-                </form>
-            </div>
-
-        </div>
-    </div>
-</section>
 
 
 <footer class="footer">

@@ -14,6 +14,14 @@ require('../models/User.php');
 
 if (isset($_POST)) {
 
+    foreach ($_POST as $val) {
+        $val = trim($val);
+        if ($val == "") {
+
+            $_SESSION['errors'][] = 'Заполните все поля!';
+        }
+    }
+
     $email = $_POST['userEmail'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];

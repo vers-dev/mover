@@ -15,10 +15,19 @@ require('../models/Trip.php');
 
 if (isset($_POST)) {
 
+    foreach ($_POST as $val) {
+        $val = trim($val);
+        if ($val == "") {
+
+            $_SESSION['errors'][] = 'Заполните все поля!';
+        }
+    }
+
     $from = $_POST['from'];
     $to = $_POST['to'];
     $time = $_POST['time'];
     $date = $_POST['date'];
+    $price = $_POST['price'];
     $userId = $_SESSION['id'];
 
     if (empty($_SESSION['errors'])) {
@@ -27,7 +36,8 @@ if (isset($_POST)) {
             "to" => $to,
             "time" => $time,
             "date" => $date,
-            "user_id" => $userId
+            "user_id" => $userId,
+            "price" => $price
         );
 
         var_dump($trip);
@@ -38,4 +48,4 @@ if (isset($_POST)) {
     }
 
 }
-//header("Location: /registration.php");
+header("Location: /create-trip.php");

@@ -128,7 +128,11 @@ require('app/models/Trip.php');
                     </ul>
                 </div>
                 <div class="result">
-                    <?php $trips = $database->query("SELECT * FROM `trip` JOIN `users` ON `trip`.`user_id` = `users`.`id`")->fetchAll(PDO::FETCH_ASSOC); ?>
+                    <?php
+                    $trips = $database->query("SELECT *, trip.id AS trip_id FROM `trip` INNER JOIN `users` ON `trip`.`user_id` = `users`.`id`")->fetchAll(PDO::FETCH_ASSOC);
+                    var_dump($trips);
+//                    $trip_id = $database->query("SELECT id AS trip_id FROM `trip`")
+                    ?>
                     <ul class="result-wrapper">
 
                         <li class="result-info">
@@ -136,7 +140,7 @@ require('app/models/Trip.php');
                             <p class="result__num">Найдено: <?php echo count($trips); ?></p>
                         </li>
                         <?php foreach ($trips as $trip): ?>
-                        <a href="#">
+                        <a href="/trip.php?id=<?php echo $trip['trip_id']; ?>">
                             <li class="route">
                                 <header class="route-header">
                                     <div class="route-info">
