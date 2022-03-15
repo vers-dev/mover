@@ -6,23 +6,8 @@ session_start();
 require('app/models/User.php');
 require('app/models/Trip.php');
 
-//$array = ['Mercedes-Benz CLA  AMG седан','Mercedes-Benz CLS  седан','Mercedes-Benz S седан','Mercedes-Benz Maybach S седан','Mercedes-Benz A седан','Mercedes-Benz C AMG купе','Mercedes-Benz C AMG седан','Mercedes-Benz C седан','Mercedes-Benz C купе','Mercedes-Benz E AMG седан','Mercedes-Benz E купе','Mercedes-Benz E седан','Mercedes-Benz AMG GT купе','Mercedes-Benz A хэтчбек','Mercedes-Benz E универсал','Mercedes-Benz AMG GT хэтчбек','Mercedes-Benz GLE Coupe кроссовер','Mercedes-Benz GLA кроссовер','Mercedes-Benz GLB внедорожник','Mercedes-Benz GLE Coupe AMG кроссовер','Mercedes-Benz GLS внедорожник','Mercedes-Benz EQC кроссовер','Mercedes-Benz GLE кроссовер','Mercedes-Benz G внедорожник','Mercedes-Benz G AMG внедорожник','Mercedes-Benz GLC кроссовер','Mercedes-Benz GLC AMG кроссовер','Mercedes-Benz GLC Coupe кроссовер','Mercedes-Benz GLC Coupe AMG кроссовер','Mercedes-Benz Sprinter фургон','Mercedes-Benz Sprinter микроавтобус','Mercedes-Benz Vito фургон','Mercedes-Benz Vito микроавтобус','Mercedes-Benz V микроавтобус','Mercedes-Benz 200','Mercedes-Benz A','Mercedes-Benz A AMG','Mercedes-Benz AMG GT','Mercedes-Benz B','Mercedes-Benz C','Mercedes-Benz C AMG','Mercedes-Benz Citan','Mercedes-Benz CL','Mercedes-Benz CL AMG','Mercedes-Benz CLA ','Mercedes-Benz CLA  AMG','Mercedes-Benz CLC','Mercedes-Benz CLK','Mercedes-Benz CLS ','Mercedes-Benz CLS AMG','Mercedes-Benz E','Mercedes-Benz E AMG','Mercedes-Benz G','Mercedes-Benz G AMG','Mercedes-Benz GL','Mercedes-Benz GL AMG','Mercedes-Benz GLA','Mercedes-Benz GLA AMG','Mercedes-Benz GLC','Mercedes-Benz GLC AMG','Mercedes-Benz GLC Coupe','Mercedes-Benz GLC Coupe AMG','Mercedes-Benz GLE','Mercedes-Benz GLE AMG','Mercedes-Benz GLE Coupe','Mercedes-Benz GLE Coupe AMG','Mercedes-Benz GLK','Mercedes-Benz GLS','Mercedes-Benz GLS AMG','Mercedes-Benz M','Mercedes-Benz M AMG','Mercedes-Benz Maybach S','Mercedes-Benz R','Mercedes-Benz R AMG','Mercedes-Benz S','Mercedes-Benz S AMG','Mercedes-Benz SL','Mercedes-Benz SL AMG','Mercedes-Benz SLC','Mercedes-Benz SLC AMG','Mercedes-Benz SLK','Mercedes-Benz SLK AMG','Mercedes-Benz SLR','Mercedes-Benz SLS AMG','Mercedes-Benz Sprinter','Mercedes-Benz V','Mercedes-Benz Vaneo','Mercedes-Benz Vario','Mercedes-Benz Viano','Mercedes-Benz Vito','Mercedes-Benz W100','Mercedes-Benz X-class'];
-$cars = $database->getAllData("cars");
-//echo '<pre>';
-//print_r($cars);
-//echo '</pre>';
-
-
-
-//    $database->getLink()->query("INSERT INTO cars (name) VALUES('$car')");
 
 ?>
-
-<select class="input form__input">
-    <?php foreach ($cars as $car): ?>
-        <option value="<?php echo $car['id'];?>"><?php echo $car['name'];?></option>
-    <?php endforeach; ?>
-</select>
 
 <!doctype html>
 <html lang="en">
@@ -32,15 +17,7 @@ $cars = $database->getAllData("cars");
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!--  Стили скрипты  -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/index.js" defer></script>
-
-    <!--  Шрифты  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Work+Sans:wght@100&display=swap"
-          rel="stylesheet">
+    <?php require('app/snippets/head.php'); ?>
 
     <title>Mover</title>
 </head>

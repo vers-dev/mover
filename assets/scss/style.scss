@@ -530,6 +530,10 @@ ul, ol {
     align-items: center;
   }
 
+  &-title{
+    color: var(--green-color);
+  }
+
   &-content{
     display: flex;
     flex-direction: column;
@@ -550,6 +554,10 @@ ul, ol {
     &__photo{
       width: 40px;
     }
+    &-name{
+      color: var(--green-color);
+    }
+
   }
 
   &__button{
@@ -561,6 +569,9 @@ ul, ol {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    &__desc{
+      color: var(--grey-color);
+    }
   }
 
   &-info{
@@ -572,5 +583,105 @@ ul, ol {
   &-car{
     font-size: 18px;
   }
+}
+
+.profile{
+  .route {
+    padding: 15px;
+    border-radius: var(--border-radius);
+    background-color: white;
+
+    &-line {
+      width: 65%;
+      border: 1px solid #00000012;
+      margin: 15px auto;
+    }
+
+    &-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    &-way {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    &-duration {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .user {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+
+      &__img {
+        width: 40px;
+        height: 100%;
+      }
+    }
+  }
+
+  .coming{
+    &__title{
+      margin: 35px 0 15px;
+    }
+  }
+
+
+  &__button{
+    padding: 10px 0;
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 1000;
+  display: none;
+  min-width: 10rem;
+  padding: .5rem 0;
+  margin: 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
+}
+
+.dropdown, .dropend, .dropstart, .dropup {
+  position: relative;
+}
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: .25rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
 }
 

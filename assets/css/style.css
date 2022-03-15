@@ -635,6 +635,9 @@ ul, ol {
       -ms-flex-align: center;
           align-items: center;
 }
+.trip-title {
+  color: var(--green-color);
+}
 .trip-content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -665,6 +668,9 @@ ul, ol {
 .trip .user__photo {
   width: 40px;
 }
+.trip .user-name {
+  color: var(--green-color);
+}
 .trip__button {
   padding: 10px;
   text-align: center;
@@ -680,6 +686,9 @@ ul, ol {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+.trip-price__desc {
+  color: var(--grey-color);
 }
 .trip-info {
   display: -webkit-box;
@@ -698,4 +707,120 @@ ul, ol {
 }
 .trip-car {
   font-size: 18px;
+}
+
+.profile .route {
+  padding: 15px;
+  border-radius: var(--border-radius);
+  background-color: white;
+}
+.profile .route-line {
+  width: 65%;
+  border: 1px solid #00000012;
+  margin: 15px auto;
+}
+.profile .route-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30px;
+}
+.profile .route-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+.profile .route-way {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+}
+.profile .route-duration {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+.profile .route .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+}
+.profile .route .user__img {
+  width: 40px;
+  height: 100%;
+}
+.profile .coming__title {
+  margin: 35px 0 15px;
+}
+.profile__button {
+  padding: 10px 0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  z-index: 1000;
+  display: none;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+}
+
+.dropdown, .dropend, .dropstart, .dropup {
+  position: relative;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
 }

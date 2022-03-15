@@ -6,6 +6,10 @@ session_start();
 
 require('app/models/User.php');
 
+if (!isset($_SESSION['id'])){
+    header("Location: /login.php");
+    die();
+}
 ?>
 
 <!doctype html>
@@ -27,6 +31,11 @@ require('app/models/User.php');
 <section class="section section-single create">
     <div class="container">
         <div class="section-content auth-content">
+
+            <?php $isDriver = $database->getLink()->query("SELECT `car_id` FROM `users` WHERE id = " . $_SESSION['id'])->fetchAll(PDO::FETCH_ASSOC)[0];?>
+
+            <?php if ($isDriver['car_id'] != null): ?>
+
             <form action="app/actions/createTrip.action.php" class="registration" method="post" name="registration">
                 <h2 class="section__title auth__title">Создание поездки</h2>
                 <?php require('app/snippets/alert.php'); ?>
@@ -63,7 +72,9 @@ require('app/models/User.php');
                 <button class="button registration__button" type="submit">Создать</button>
 
             </form>
-
+            <?php else: ?>
+                <h2 class="section__title auth__title">Добавьте автомобиль в профиле, чтобы создавать поездки!</h2>
+            <?php endif; ?>
         </div>
     </div>
 </section>

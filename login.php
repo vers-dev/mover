@@ -6,6 +6,7 @@ session_start();
 
 require('app/models/User.php');
 
+if (isset($_SESSION['id'])) header("Location: /profile.php");
 
 ?>
 
@@ -17,15 +18,7 @@ require('app/models/User.php');
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!--  Стили скрипты  -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/index.js" defer></script>
-
-    <!--  Шрифты  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Work+Sans:wght@100&display=swap"
-          rel="stylesheet">
+    <?php require('app/snippets/head.php'); ?>
 
     <title>Mover</title>
 </head>
@@ -36,13 +29,14 @@ require('app/models/User.php');
 <section class="section section-single auth">
     <div class="container">
         <div class="section-content auth-content">
+
             <form action="app/actions/authorization.action.php" class="login" method="post" name="login">
                 <h2 class="section__title auth__title">Авторизация</h2>
                 <?php require('app/snippets/form-errors.php'); ?>
                 <div class="login-wrapper">
                     <div class="form__group">
                         <input type="input" class="input form__input" name="userEmail" id="email" placeholder=" ">
-                        <label for="email" class="form__label">E-mail</label>
+                        <label for="userEmail" class="form__label">E-mail</label>
                     </div>
 
                     <div class="form__group">
@@ -50,10 +44,12 @@ require('app/models/User.php');
                         <label for="userPassword" class="form__label">Пароль</label>
                     </div>
                 </div>
+
                 <p class="form__subtext">Не зарагистрированы? <a href="/registration.php" class="color-blue">Регистрация</a></p>
                 <button class="button registration__button" type="submit">Войти</button>
 
             </form>
+
 
         </div>
     </div>

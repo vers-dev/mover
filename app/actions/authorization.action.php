@@ -36,7 +36,6 @@ if (isset($_POST)) {
         if ($user['password'] == $password){
             $_SESSION['id'] = getUserByEmail($email)['id'];
             $_SESSION['alerts'][] = 'Поздравляем вас с успешной авторизацией!';
-            echo 'Авторизация прошла успешно';
             header("Location: /profile.php");
             die();
         } else{
