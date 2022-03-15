@@ -90,62 +90,79 @@ if (empty($_GET['id'])) {
                             <button class="button profile__button" type="submit">Редактировать</button>
                         </div>
                     </form>
+                <?php else: ?>
+
+                    <div class="user">
+
+                            <h3 class="user-data">Email: <?php echo $user['email']; ?></h3>
+                            <h3 class="user-data">
+                                ФИО: <?php echo $user['last_name']; ?> <?php echo $user['first_name']; ?> <?php echo $user['mid_name']; ?></h3>
+                            <h3 class="user-data">Телефон: <?php echo $user['phone']; ?></h3>
+                            <?php if ($user['rating'] != null): ?>
+                                <h3 class="user-data">Рейтинг: <?php echo $user['rating']; ?></h3>
+                            <?php endif; ?>
+                            <h3 class="user-data">Поездки: <?php echo $user['rides']; ?></h3>
+                            <h3 class="user-data">Зарегистрирован: <?php echo $user['created_at']; ?></h3>
+
+                    </div>
                 <?php endif; ?>
+
                 <div class="coming">
+                    <?php $booking = $database->getLink()->query("SELECT * FROM `booking_trip` WHERE user_id = " . $_SESSION['id'])->fetchAll(PDO::FETCH_ASSOC); ?>
+                    <?php if (!empty($booking)): ?>
                     <h2 class="section__title coming__title">Забронированные поездки</h2>
                     <ul class="result-wrapper">
-                        <?php $booking = $database->getLink()->query("SELECT * FROM `booking_trip` WHERE user_id = " . $_SESSION['id'])->fetchAll(PDO::FETCH_ASSOC); ?>
-                        <?php if (!empty($booking)): ?>
-                            <?php foreach ($booking as $item): ?>
-                                <?php $userTrips = $database->getLink()->query("SELECT *, trip.id AS trip_id FROM `trip` INNER JOIN `users` ON `trip`.`user_id` = `users`.`id` WHERE trip.id = " . $item['trip_id'])->fetchAll(PDO::FETCH_ASSOC); ?>
-                                <?php foreach ($userTrips as $trip): ?>
-                                    <a href="/trip.php?id=<?php echo $trip['trip_id']; ?>">
-                                        <li class="route">
-                                            <header class="route-header">
-                                                <div class="route-info">
-                                                    <h4 class="route__title">Направление:</h4>
-                                                    <div class="route-way">
-                                                        <p class="route-dist"><?php echo $trip['from']; ?></p>
-                                                        <img src="assets/images/icons/arrow.svg" alt="arrow"
-                                                             class="arrow">
-                                                        <p class="route-dist"><?php echo $trip['to']; ?></p>
-                                                    </div>
-
+                        <?php foreach ($booking as $item): ?>
+                            <?php $userTrips = $database->getLink()->query("SELECT *, trip.id AS trip_id FROM `trip` INNER JOIN `users` ON `trip`.`user_id` = `users`.`id` WHERE trip.id = " . $item['trip_id'])->fetchAll(PDO::FETCH_ASSOC); ?>
+                            <?php foreach ($userTrips as $trip): ?>
+                                <a href="/trip.php?id=<?php echo $trip['trip_id']; ?>"
+                                   style="color: var(--green-color);">
+                                    <li class="route">
+                                        <header class="route-header">
+                                            <div class="route-info">
+                                                <h4 class="route__title">Направление:</h4>
+                                                <div class="route-way">
+                                                    <p class="route-dist"><?php echo $trip['from']; ?></p>
+                                                    <img src="assets/images/icons/arrow.svg" alt="arrow"
+                                                         class="arrow">
+                                                    <p class="route-dist"><?php echo $trip['to']; ?></p>
                                                 </div>
 
-                                                <div class="route-duration">
-                                                    <h4 class="route__title">Время отправки:</h4>
-                                                    <p class="route__duration"><?php echo $trip['time']; ?>
-                                                        ; <?php echo $trip['date']; ?></p>
+                                            </div>
+
+                                            <div class="route-duration">
+                                                <h4 class="route__title">Время отправки:</h4>
+                                                <p class="route__duration"><?php echo $trip['time']; ?>
+                                                    ; <?php echo $trip['date']; ?></p>
+                                            </div>
+                                            <p class="price route-price"><?php echo $trip['price']; ?>,00 ₽</p>
+                                        </header>
+                                        <footer class="route-footer">
+                                            <div class="user">
+                                                <div class="user-photo">
+                                                    <img src="assets/images/avatar/<?php echo $trip['photo_url']; ?>"
+                                                         alt="avatar" class="user__img">
                                                 </div>
-                                                <p class="price route-price"><?php echo $trip['price']; ?>,00 ₽</p>
-                                            </header>
-                                            <footer class="route-footer">
-                                                <div class="user">
-                                                    <div class="user-photo">
-                                                        <img src="assets/images/avatar/<?php echo $trip['photo_url']; ?>"
-                                                             alt="avatar" class="user__img">
-                                                    </div>
-                                                    <div class="user-info">
-                                                        <h4 class="user__name"><?php echo $trip['first_name']; ?></h4>
-                                                        <p class="user__rating">
-                                                            <?php if ($trip['rating'] != null): ?>
-                                                                <?php echo $trip['rating']; ?>
-                                                                <svg width="17" height="16" viewBox="0 0 17 16"
-                                                                     fill="none"
-                                                                     xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M4.112 15.443C3.726 15.641 3.288 15.294 3.366 14.851L4.196 10.121L0.672996 6.765C0.343996 6.451 0.514996 5.877 0.955996 5.815L5.854 5.119L8.038 0.792C8.235 0.402 8.768 0.402 8.965 0.792L11.149 5.119L16.047 5.815C16.488 5.877 16.659 6.451 16.329 6.765L12.807 10.121L13.637 14.851C13.715 15.294 13.277 15.641 12.891 15.443L8.5 13.187L4.111 15.443H4.112Z"
-                                                                          fill="#054752"/>
-                                                                </svg>
-                                                            <?php endif ?>
-                                                        </p>
-                                                    </div>
+                                                <div class="user-info">
+                                                    <h4 class="user__name"><?php echo $trip['first_name']; ?></h4>
+                                                    <p class="user__rating">
+                                                        <?php if ($trip['rating'] != null): ?>
+                                                            <?php echo $trip['rating']; ?>
+                                                            <svg width="17" height="16" viewBox="0 0 17 16"
+                                                                 fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M4.112 15.443C3.726 15.641 3.288 15.294 3.366 14.851L4.196 10.121L0.672996 6.765C0.343996 6.451 0.514996 5.877 0.955996 5.815L5.854 5.119L8.038 0.792C8.235 0.402 8.768 0.402 8.965 0.792L11.149 5.119L16.047 5.815C16.488 5.877 16.659 6.451 16.329 6.765L12.807 10.121L13.637 14.851C13.715 15.294 13.277 15.641 12.891 15.443L8.5 13.187L4.111 15.443H4.112Z"
+                                                                      fill="#054752"/>
+                                                            </svg>
+                                                        <?php endif ?>
+                                                    </p>
                                                 </div>
-                                            </footer>
-                                        </li>
-                                    </a>
-                                <?php endforeach; ?>
+                                            </div>
+                                        </footer>
+                                    </li>
+                                </a>
                             <?php endforeach; ?>
+                        <?php endforeach; ?>
                         <?php endif; ?>
 
                     </ul>

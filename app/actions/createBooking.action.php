@@ -24,6 +24,11 @@ if ($_GET['trip_id']){
     if (empty($_SESSION['errors'])){
 
         $database->getLink()->query("UPDATE trip SET car_seats = car_seats - 1 WHERE id = " . $trip_id );
+        $seats = $database->getLink()->query("SELECT `car_seats` FROM `trip` WHERE id = " . $trip_id )->fetchAll(PDO::FETCH_ASSOC)[0];
+
+        if ($seats < 1){
+            $database->getLink()->query("UPDATE `trip` SET `status_id` = 2 WHERE `id` = " . $trip_id );
+        }
 
         $booking = array(
             "user_id" => $user_id,

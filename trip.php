@@ -64,7 +64,7 @@ if (isset($_GET)) {
                     </div>
                     <a href="/profile.php?id=<?php echo $val['id']; ?>">
                         <img src="assets/images/avatar/<?php echo $val['photo_url']; ?>" alt="user"
-                                     class="user__photo">
+                             class="user__photo">
                     </a>
                 </div>
                 <hr>
@@ -76,11 +76,15 @@ if (isset($_GET)) {
 
                 <?php if (isset($_SESSION['id'])): ?>
 
-                <a href="/app/actions/createBooking.action.php?trip_id=<?php echo $val['trip_id']; ?>&user_id=<?php echo $_SESSION['id']; ?>"
-                   class="button trip__button">Забронировать</a>
-            <?php else: ?>
+                    <?php if($val['car_seats'] < 1): ?>
+                        <p>К сожалению места закончились!</p>
+                    <?php else: ?>
+                        <a href="/app/actions/createBooking.action.php?trip_id=<?php echo $val['trip_id']; ?>&user_id=<?php echo $_SESSION['id']; ?>"
+                           class="button trip__button">Забронировать</a>
+                    <?php endif; ?>
+                <?php else: ?>
                     <a href="/login.php" class="button trip__button">Для бронирования поездки войдите в систему!</a>
-            <?php endif; ?>
+                <?php endif; ?>
             <?php endforeach; ?>
         </div>
     </div>

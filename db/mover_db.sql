@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 15, 2022 at 01:50 AM
+-- Generation Time: Mar 15, 2022 at 11:25 AM
 -- Server version: 5.7.33
 -- PHP Version: 8.0.8
 
@@ -51,7 +51,10 @@ INSERT INTO `booking_trip` (`id`, `user_id`, `trip_id`) VALUES
 (11, 18, 4),
 (12, 18, 4),
 (13, 18, 4),
-(14, 18, 4);
+(14, 18, 4),
+(15, 18, 4),
+(16, 19, 4),
+(17, 8, 4);
 
 -- --------------------------------------------------------
 
@@ -493,7 +496,8 @@ INSERT INTO `cars` (`id`, `name`) VALUES
 (422, 'Mercedes-Benz Viano'),
 (423, 'Mercedes-Benz Vito'),
 (424, 'Mercedes-Benz W100'),
-(425, 'Mercedes-Benz X-class');
+(425, 'Mercedes-Benz X-class'),
+(426, 'Нет авто');
 
 -- --------------------------------------------------------
 
@@ -541,7 +545,8 @@ CREATE TABLE `trip` (
 
 INSERT INTO `trip` (`id`, `from`, `to`, `time`, `date`, `price`, `car_seats`, `car_id`, `user_id`, `status_id`, `created_at`) VALUES
 (3, 'Владивосток', 'Калининград', '12:04', '2022-03-15', 10000, 0, NULL, 18, 1, '2022-03-14 13:11:24'),
-(4, 'Волгоград', 'Калининград', '12:20', '2022-03-16', 600, 6, NULL, 18, 1, '2022-03-14 15:49:47');
+(4, 'Волгоград', 'Калининград', '12:20', '2022-03-16', 600, 3, NULL, 18, 1, '2022-03-14 15:49:47'),
+(5, 'Волгоград', 'Сочи', '13:18', '2022-03-16', 2000, 8, NULL, 8, 1, '2022-03-15 08:14:01');
 
 -- --------------------------------------------------------
 
@@ -580,7 +585,7 @@ CREATE TABLE `users` (
   `photo_url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'user.svg',
   `rides` int(11) DEFAULT '0',
   `rating` double DEFAULT NULL,
-  `car_id` int(11) DEFAULT NULL,
+  `car_id` int(11) DEFAULT '426',
   `role_id` int(11) DEFAULT '1',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -591,14 +596,16 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `email`, `password`, `phone`, `first_name`, `last_name`, `mid_name`, `photo_url`, `rides`, `rating`, `car_id`, `role_id`, `created_at`) VALUES
 (7, 'butman100@bk.ru', '4297f44b13955235245b2497399d7a93', '79178984606', 'rogovvvvvvvvvvvv', 'rogov', 'rogov', 'user.svg', 0, NULL, 1, 1, '2022-03-13 21:02:59'),
-(8, 'butman90@bk.ru', '4297f44b13955235245b2497399d7a93', '79178984606', 'rogov', 'rogov', 'rogov', 'user.svg', 0, NULL, 1, 1, '2022-03-13 21:09:39'),
+(8, 'butman90@bk.ru', '4297f44b13955235245b2497399d7a93', '79178984606', 'rogov', 'rogov', 'rogov', 'user.svg', 0, NULL, 8, 1, '2022-03-13 21:09:39'),
 (11, 'avavionmvm@gmail.com', '47c2466da490df86916a5ade3cb73fcf', '123123123131', 'Алан', 'Богов', 'Андреевич', 'user.svg', 0, NULL, 1, 1, '2022-03-13 21:13:08'),
 (12, 'butman91@bk.ru', '4c4711ea06c811b55afe1017dc3f39dc', '1231313', 'rogov', 'rogov', 'rogov', 'user.svg', 0, NULL, 1, 1, '2022-03-13 21:15:28'),
 (13, 'butman92@bk.ru', '202cb962ac59075b964b07152d234b70', '123', '123', '123', '123', 'user.svg', 0, NULL, 1, 1, '2022-03-13 21:35:35'),
 (14, 'butman95@bk.ru', '202cb962ac59075b964b07152d234b70', '123', '123', '123', '123', 'user.svg', 0, NULL, 1, 1, '2022-03-13 21:36:08'),
 (15, 'butman96@bk.ru', '202cb962ac59075b964b07152d234b70', '123', '123', '123', '123', 'user.svg', 0, NULL, 1, 1, '2022-03-13 21:36:24'),
 (16, 'butman46@bk.ru', '202cb962ac59075b964b07152d234b70', '123', '123', '123', '123', 'user.svg', 0, NULL, 1, 1, '2022-03-13 21:54:19'),
-(18, 'butman99@bk.ru', 'd41d8cd98f00b204e9800998ecf8427e', '1231231', 'hjujd', 'hjujd', 'hjujd', 'user.svg', 0, NULL, 1, 1, '2022-03-14 13:01:11');
+(18, 'butman99@bk.ru', 'd41d8cd98f00b204e9800998ecf8427e', '1231231', 'hjujd', 'hjujd', 'hjujd', 'user.svg', 0, NULL, 1, 1, '2022-03-14 13:01:11'),
+(19, 'butman99999@bk.ru', '4297f44b13955235245b2497399d7a93', '79178984606', 'rogov', 'rogov', 'rogov', 'user.svg', 0, NULL, 426, 1, '2022-03-14 23:55:38'),
+(20, 'butman122@bk.ru', '4297f44b13955235245b2497399d7a93', '79178984606', 'Рогов', 'Рогов', 'Рогов', 'user.svg', 0, NULL, 426, 1, '2022-03-15 08:14:59');
 
 --
 -- Indexes for dumped tables
@@ -654,13 +661,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `booking_trip`
 --
 ALTER TABLE `booking_trip`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=426;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=427;
 
 --
 -- AUTO_INCREMENT for table `role`
@@ -672,7 +679,7 @@ ALTER TABLE `role`
 -- AUTO_INCREMENT for table `trip`
 --
 ALTER TABLE `trip`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `trip_status`
@@ -684,7 +691,7 @@ ALTER TABLE `trip_status`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables

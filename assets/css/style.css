@@ -267,10 +267,10 @@ ul, ol {
           box-shadow: rgba(0, 0, 0, 0.16) 0px 1pt 4pt, rgba(0, 0, 0, 0.08) 0px 2pt 8pt;
 }
 .banner-form .first {
-  border-radius: 5px 0 0 5px !important;
+  border-radius: 5px 0 0 5px;
 }
 .banner-form .last {
-  border-radius: 0 5px 5px 0 !important;
+  border-radius: 0 5px 5px 0;
 }
 .banner__input {
   border-radius: 0;
@@ -823,4 +823,54 @@ ul, ol {
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+}
+
+@media (max-width: 420px) {
+  .banner-content {
+    top: 20%;
+  }
+  .banner-form {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+  .banner__input.first {
+    border-radius: 0;
+  }
+  .banner__button {
+    padding: 10px 0;
+  }
+  .banner__button.last {
+    border-radius: 0;
+  }
+
+  .features-grid {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .routes-grid {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .search-grid {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+  .search-grid .route-header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 10px;
+  }
+
+  .coming .route-header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 10px;
+  }
 }

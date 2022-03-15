@@ -223,11 +223,11 @@ ul, ol {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1pt 4pt, rgba(0, 0, 0, 0.08) 0px 2pt 8pt;
 
     & .first {
-      border-radius: 5px 0 0 5px !important;
+      border-radius: 5px 0 0 5px;
     }
 
     & .last {
-      border-radius: 0 5px 5px 0 !important;
+      border-radius: 0 5px 5px 0;
     }
   }
 
@@ -683,5 +683,62 @@ ul, ol {
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+}
+
+@media (max-width: 420px) {
+  .banner{
+    &-content{
+      top: 20%;
+    }
+    &-form{
+      grid-template-columns: 1fr;
+      gap: 5px;
+    }
+    &__input{
+      &.first{
+        border-radius: 0;
+      }
+
+    }
+    &__button{
+      padding: 10px 0;
+      &.last{
+        border-radius: 0;
+      }
+    }
+  }
+  .features{
+    &-grid{
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .routes{
+    &-grid{
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .search{
+    &-grid{
+      grid-template-columns: 1fr;
+      .route{
+        &-header{
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+    }
+  }
+
+  .coming{
+    .route{
+      &-header{
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  }
+
 }
 
